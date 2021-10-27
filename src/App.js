@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import User from './components/User';
+import FollowerList from './components/FollowerList';
 
 class App extends React.Component {
     state = {
@@ -44,10 +46,12 @@ componentDidMount() {
   render() {
     return(<div>
       <h1>Github Info</h1>
-      <form>
-        <input value={this.state.input} onChange={this.handleChange} />
+      <div>
+        <input onChange={this.handleChange} />
         <button onClick={this.handleSubmit}>Search</button>
-      </form>
+        <User user={this.state.user} />
+        <FollowerList userHandle={this.state.user.login}/>
+        </div>
     </div>);
   }
 }
